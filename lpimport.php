@@ -52,14 +52,17 @@
 					 values(".$values.")";
 				
 				unset($csvfile);				//clear array of row
+				
 				if(!mysqli_query($con,$query)){
 					echo "Error: ".mysqli_error($con);
-				}else{/*
-					echo "<script type=\"text/javascript\">
-						alert(\"CSV File has been successfully Imported.\");
+				}else{
+					/*echo "<script type=\"text/javascript\">
+						alert(\"".$_FILES["file"]["name"]." File has been successfully Imported.\");
 						window.location = \"lpexcel.php\"
-					</script>";*/
+					</script>";
+					*/
 				}
+				echo $query."<br><br>";
 			}
 			fclose($file);
 			
