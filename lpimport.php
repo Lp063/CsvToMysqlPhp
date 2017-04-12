@@ -50,8 +50,7 @@
 				$columns = rtrim($columns,',');
 				$query = "INSERT INTO `products` (".$columns.") 
 					 values(".$values.")";
-				echo $query;
-				exit;
+				
 				unset($csvfile);				//clear array of row
 				if(!mysqli_query($con,$query)){
 					echo "Error: ".mysqli_error($con);
