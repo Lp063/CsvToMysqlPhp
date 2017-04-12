@@ -6,7 +6,6 @@
 	$columH = array();
 	$rowQ="select * from products";
 	$result_set =  mysqli_query($con,$rowQ);
-	$x=sizeof($columH);
 	//$rowQ="select * from products";
 	//$result_set =  mysqli_query($con,$rowQ);
 	//while($row = mysqli_fetch_array($result_set))
@@ -51,7 +50,10 @@
 					}
 				?>
 			</tr>
-			<?php //echo"<pre>";print_r($result_set);echo"</pre>";echo $x;
+			<?php 
+				//echo"<pre>";print_r($columnH);echo"</pre>";
+				//$x=count($columH);
+				//echo $x;
 				echo "<tr>";
 				
 					while($row = mysqli_fetch_array($result_set)){
