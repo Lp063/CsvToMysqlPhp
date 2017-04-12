@@ -35,13 +35,16 @@
 				}
 				$values = substr($values,1);
 				$columns = rtrim($columns,',');
-				
-				echo"<pre>";print_r($csvfile);echo"</pre><hr>";
 				$query = "INSERT INTO `products` (".$columns.") 
 					 values(".$values.")";
 				unset($csvfile);				//clear array of row
 				if(!mysqli_query($con,$query)){
 					echo "Error: ".mysqli_error($con);
+				}else{
+					echo "<script type=\"text/javascript\">
+						alert(\"CSV File has been successfully Imported.\");
+						window.location = \"lpexcel.php\"
+					</script>";
 				}
 			}
 			fclose($file);
