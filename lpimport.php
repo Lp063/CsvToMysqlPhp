@@ -21,30 +21,40 @@
 				$values ="";
 				for($r=0;$r<$rowSize;$r++){			//creating string of values
 					$coldata = $csvfile[0][$r];
-					if($coldata != "" && $coldata != "NULL" && $coldata != NULL){
-						if(is_numeric($coldata)){
-							$values = $values.",".$coldata;
-							$columns = $columns."`".$colHead[$r]."`,";
-						}
-						else if(!is_numeric($coldata)){
-							$coldata = "'".$coldata."'";
-							$values = $values.",".$coldata;
+					if($colHead[$r] == 'id'){
+						echo "ID ".$columns."<br>";
+						echo $values."<br>";
+					}else if($colHead[$r] == "prod_id"){
+						echo "PRODID ".$columns."<br>";
+						echo $values."<br>";
+					}else{
+						if($coldata != "" && $coldata != "NULL" && $coldata != NULL){
+							if(is_numeric($coldata)){
+								$values = $values.",".$coldata;
+							}
+							else if(!is_numeric($coldata)){
+								$coldata = "'".$coldata."'"; // text in quotes
+								$values = $values.",".$coldata;
+							}
 							$columns = $columns."`".$colHead[$r]."`,";
 						}
 					}
+					
 				}
 				$values = substr($values,1);
 				$columns = rtrim($columns,',');
 				$query = "INSERT INTO `products` (".$columns.") 
 					 values(".$values.")";
+				echo $query;
+				exit;
 				unset($csvfile);				//clear array of row
 				if(!mysqli_query($con,$query)){
 					echo "Error: ".mysqli_error($con);
-				}else{
+				}else{/*
 					echo "<script type=\"text/javascript\">
 						alert(\"CSV File has been successfully Imported.\");
 						window.location = \"lpexcel.php\"
-					</script>";
+					</script>";*/
 				}
 			}
 			fclose($file);
