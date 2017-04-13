@@ -8,7 +8,7 @@
 	$countRes = mysqli_query($con,"select count(*) from products");
 	$cnt = mysqli_fetch_array($countRes);
 	$count = $cnt[0];
-	$lp = 0;
+	$queryNumber = 0;
 	
 	$colsQ = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='lpexceldb' AND `TABLE_NAME`='products'";
 	$columns = mysqli_query($con,$colsQ);
@@ -59,8 +59,8 @@
 				if(!mysqli_query($con,$query)){
 					echo "Error: ".mysqli_error($con);
 				}else{
-				$lp = $lp +1;
-				echo "<br><b>".$lp."</b><br>".$query;
+				$queryNumber = $queryNumber +1;
+				echo "<br><b>".$queryNumber."</b><br>".$query;
 					/*echo "<script type=\"text/javascript\">
 						alert(\"".$_FILES["file"]["name"]." File has been successfully Imported.\");
 						window.location = \"lpexcel.php\"
